@@ -27,7 +27,6 @@ function UpdateMovieForm(props) {
             setError('');
         })
         .catch((err) => {
-            console.log(err.response);
             setError(err.response);
             setIsLoaded(true);
             setFormValues(initialFormObject);
@@ -39,7 +38,6 @@ function UpdateMovieForm(props) {
         setMovieToUpdate(id);
     },[])
     
-    console.log('formValues', formValues);
 
     const handleChange = (e) => {
         if (e.target.name.includes('stars')){

@@ -12,6 +12,7 @@ const App = () => {
   const [movieList, setMovieList] = useState([]);
   const [requestError, setRequestError] = useState('');
   const [updateError, setUpdateError] = useState('');
+  const [deleteError, setDeleteError] = useState('');
 
   const getMovieList = () => {
     axios
@@ -21,7 +22,6 @@ const App = () => {
         setRequestError('');
       })
       .catch(err => {
-        console.log(err.response.statusText);
         setRequestError(`Unable to Load Movie List - ${err.response.status} ${err.response.statusText}`);
       });
   };
@@ -30,13 +30,11 @@ const App = () => {
     axios
         .put(`http://localhost:5000/api/movies/${id}`, updatedMovie)
         .then((res) => {
-            console.log(res.data);
             // if update is successful, get updated MovieList
             setUpdateError('');
             getMovieList();
         })
         .catch((err) => {
-          console.log(err.response.statusText);
           setUpdateError(`Unable to Update Movie  - ${err.response.status} ${err.response.statusText}`);
         });
   }
@@ -44,6 +42,19 @@ const App = () => {
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
   };
+
+  const deleteMovie = id => {
+    axios
+    .delete(`http://localhost:5000/api/movs/${id}`)
+    .then((res) => {
+        // if update is successful, get updated MovieList
+        setDeleteError('');
+        getMovieList();
+    })
+    .catch((err) => {
+      setDeleteError(`Unable to Delete Movie  - ${err.response.status} ${err.response.statusText}`);
+    });
+  }
 
   useEffect(() => {
     getMovieList();
@@ -54,11 +65,11 @@ const App = () => {
       <SavedList list={savedList} />
 
       <Route exact path="/">
-        <MovieList movies={movieList} requestError={requestError} updateError={updateError} />
+        <MovieList movies={movieList} requestError={requestError} updateError={updateError} deleteError={deleteError} />
       </Route>
 
       <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
+        <Movie addToSavedList={addToSavedList} deleteMovie={deleteMovie}/>
       </Route>
 
       <Route path="/update-movie/:id">
