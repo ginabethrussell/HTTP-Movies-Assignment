@@ -75,6 +75,7 @@ function UpdateMovieForm(props) {
         return (
             <div className='updateForm-wrapper'>
                 <form onSubmit={handleSubmit}>
+                    <div className='form-group'>
                     <label htmlFor='title'>Title</label>
                     <input type='text'
                         id='title'
@@ -82,6 +83,8 @@ function UpdateMovieForm(props) {
                         value={formValues.title}
                         onChange={handleChange}
                         />
+                    </div>
+                    <div className='form-group'>
                     <label htmlFor='director'>Director</label>
                     <input type='text'
                         id='director'
@@ -89,6 +92,8 @@ function UpdateMovieForm(props) {
                         value={formValues.director}
                         onChange={handleChange}
                         />
+                    </div>
+                    <div className='form-group'>
                     <label htmlFor='metascore'>Metascore</label>
                     <input type='text'
                         id='metascore'
@@ -96,6 +101,8 @@ function UpdateMovieForm(props) {
                         value={formValues.metascore}
                         onChange={handleChange}
                         />
+                    </div>
+                    <div className='form-group'>
                     <label htmlFor='stars'>Stars</label>    
                     {formValues.stars.map((star, index) => (
                         <input key='index' type='text'
@@ -106,6 +113,7 @@ function UpdateMovieForm(props) {
                         />
                     ))
                     }
+                    </div>
                     <button type='submit'>Submit Update</button>
                 </form>
                 

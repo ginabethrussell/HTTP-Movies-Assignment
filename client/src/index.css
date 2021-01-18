@@ -76,8 +76,17 @@ body {
   text-align: center;
 }
 
+.movie-list {
+  padding: 30px 50px;
+}
+.add-movie-link {
+  padding: 10px 16px;
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
 
-.updateForm-wrapper {
+.updateForm-wrapper, .addMovieForm-wrapper {
   width: 60%;
   background-color: #fff;
   border: 0;
@@ -87,4 +96,22 @@ body {
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+}
+
+.form-group {
+  padding: 5px 8px;
+  font-size: 16px;
+  margin: 10px;
+  width: 100%;
+  display: flex;
+}
+
+.form-group label {
+  width: 20%;
+}
+
+.form-group input {
+  width: 80%;
+  margin-right: 20px;
+  padding: 3px 5px;
 }
