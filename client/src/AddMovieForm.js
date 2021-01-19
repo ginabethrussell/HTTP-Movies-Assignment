@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
-
+import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 const initialFormObject = {
     title: "",
@@ -41,60 +41,60 @@ function AddMovieForm(props) {
   
     return (
         <div className='addMovieForm-wrapper'>
-            <form onSubmit={handleSubmit}>
-                <div className='form-group'>
-                <label htmlFor='title'>Title</label>
-                <input type='text'
+            <Form onSubmit={handleSubmit}>
+                <FormGroup>
+                <Label htmlFor='title'>Title</Label>
+                <Input type='text'
                     id='title'
                     name='title'
                     value={formValues.title}
                     onChange={handleChange}
                     required
                     />
-                </div>
-                <div className='form-group'>
-                <label htmlFor='director'>Director</label>
-                <input type='text'
+                </FormGroup>
+                <FormGroup>
+                <Label htmlFor='director'>Director</Label>
+                <Input type='text'
                     id='director'
                     name='director'
                     value={formValues.director}
                     onChange={handleChange}
                     required
                     />
-                </div>
-                <div className='form-group'>
-                <label htmlFor='metascore'>Metascore</label>
-                <input type='text'
+                </FormGroup>
+                <FormGroup>
+                <Label htmlFor='metascore'>Metascore</Label>
+                <Input type='text'
                     id='metascore'
                     name='metascore'
                     value={formValues.metascore}
                     onChange={handleChange}
                     required
                     />
-                </div>
-                <div className='form-group'>
-                <label htmlFor='stars'>Stars</label>    
-                    <input type='text'
+                </FormGroup>
+                <FormGroup>
+                <Label htmlFor='stars'>Stars</Label>    
+                    <Input type='text'
                     id='stars'
                     name='stars0'
                     value={formValues.stars[0]}
                     onChange={handleChange}
                     />
-                     <input type='text'
+                     <Input type='text'
                     id='stars'
                     name='stars1'
                     value={formValues.stars[1]}
                     onChange={handleChange}
                     />
-                     <input type='text'
+                     <Input type='text'
                     id='stars'
                     name='stars2'
                     value={formValues.stars[2]}
                     onChange={handleChange}
                     />
-                </div>
-                <button type='submit'>Add Movie</button>
-            </form>
+                </FormGroup>
+                <Button type='submit'>Add Movie</Button>
+            </Form>
         </div>
     )
 }

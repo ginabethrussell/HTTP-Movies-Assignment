@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios';
 
 const initialFormObject = {
@@ -74,38 +75,38 @@ function UpdateMovieForm(props) {
     }else {
         return (
             <div className='updateForm-wrapper'>
-                <form onSubmit={handleSubmit}>
-                    <div className='form-group'>
-                    <label htmlFor='title'>Title</label>
-                    <input type='text'
+                <Form onSubmit={handleSubmit}>
+                    <FormGroup>
+                    <Label htmlFor='title'>Title</Label>
+                    <Input type='text'
                         id='title'
                         name='title'
                         value={formValues.title}
                         onChange={handleChange}
                         />
-                    </div>
-                    <div className='form-group'>
-                    <label htmlFor='director'>Director</label>
-                    <input type='text'
+                    </FormGroup>
+                    <FormGroup>
+                    <Label htmlFor='director'>Director</Label>
+                    <Input type='text'
                         id='director'
                         name='director'
                         value={formValues.director}
                         onChange={handleChange}
                         />
-                    </div>
-                    <div className='form-group'>
-                    <label htmlFor='metascore'>Metascore</label>
-                    <input type='text'
+                    </FormGroup>
+                    <FormGroup>
+                    <Label htmlFor='metascore'>Metascore</Label>
+                    <Input type='text'
                         id='metascore'
                         name='metascore'
                         value={formValues.metascore}
                         onChange={handleChange}
                         />
-                    </div>
-                    <div className='form-group'>
-                    <label htmlFor='stars'>Stars</label>    
+                    </FormGroup>
+                    <FormGroup>
+                    <Label htmlFor='stars'>Stars</Label>    
                     {formValues.stars.map((star, index) => (
-                        <input key='index' type='text'
+                        <Input key='index' type='text'
                         id='stars'
                         name={`stars${index}`}
                         value={formValues.stars[index]}
@@ -113,9 +114,9 @@ function UpdateMovieForm(props) {
                         />
                     ))
                     }
-                    </div>
-                    <button type='submit'>Submit Update</button>
-                </form>
+                    </FormGroup>
+                    <Button type='submit'>Submit Update</Button>
+                </Form>
                 
             </div>
         )
