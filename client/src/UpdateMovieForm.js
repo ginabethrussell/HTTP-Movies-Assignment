@@ -17,7 +17,7 @@ function UpdateMovieForm(props) {
     const params = useParams();
     const id = params.id
     const history = useHistory();
-  
+   
 
     const setMovieToUpdate = () => {
         axios
@@ -26,6 +26,7 @@ function UpdateMovieForm(props) {
             setFormValues(res.data);
             setIsLoaded(true);
             setError('');
+            console.log(res.data);
         })
         .catch((err) => {
             setError(err.response);
@@ -37,7 +38,7 @@ function UpdateMovieForm(props) {
 
     useEffect(() => {
         setMovieToUpdate(id);
-    },[])
+    },[id])
     
 
     const handleChange = (e) => {
@@ -58,9 +59,25 @@ function UpdateMovieForm(props) {
         }   
     }
 
+    const addStarInput = e => {
+        e.preventDefault();
+        setFormValues({
+            ...formValues,
+            stars: [...formValues.stars, '']
+        })
+    }
+
+    const removeEmptyStars = () => {
+        const editedMovie = formValues;
+        const namedStars = formValues.stars.filter(star => star !== '');
+        editedMovie.stars = namedStars;
+        return editedMovie;
+    }
+
     const handleSubmit = e => {
         e.preventDefault();
-        props.updateMovieList(id, formValues);
+        const editedMovie = removeEmptyStars();
+        props.updateMovieList(id, editedMovie);
         history.push(`/`);  
     }
 
@@ -114,8 +131,9 @@ function UpdateMovieForm(props) {
                         />
                     ))
                     }
+                    <Button onClick={addStarInput} >+</Button>
                     </FormGroup>
-                    <Button type='submit'>Submit Update</Button>
+                    <Button color='primary' type='submit'>Submit Update</Button>
                 </Form>
                 
             </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
+import {Button, ButtonGroup} from 'reactstrap';
 
 function Movie({ addToSavedList, deleteMovie }) {
   const [movie, setMovie] = useState(null);
@@ -45,10 +46,10 @@ function Movie({ addToSavedList, deleteMovie }) {
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
-      <div className='button-div'>
-        <button onClick={updateMovie}>Update Movie</button>
-        <button onClick={handleDelete}>Delete Movie</button>
-      </div>
+      <ButtonGroup size='md'>
+        <Button  color='primary' onClick={updateMovie}>Update Movie</Button>
+        <Button  color='secondary' onClick={handleDelete}>Delete Movie</Button>
+      </ButtonGroup>
     </div>
   );
 }

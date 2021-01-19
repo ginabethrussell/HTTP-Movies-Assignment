@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
+import {Button} from 'reactstrap';
 
 function MovieList({ movies, updateError, requestError, deleteError, addError }) {
-  
+  const history = useHistory();
   return (
     <div className="movie-list">
-        <Link className='add-movie-link' to='/add-movie'>Add Movie</Link>
+        <Button color='primary' onClick={() => history.push('/add-movie')}>Add Movie</Button>
         <div className='api-error'>{updateError} {requestError} {deleteError} {addError}</div>
      {
         movies.map(movie => (
