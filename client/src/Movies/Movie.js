@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
-import {Button, ButtonGroup} from 'reactstrap';
+import { Button, ButtonGroup } from "reactstrap";
 
 function Movie({ addToSavedList, deleteMovie }) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
   const history = useHistory();
-
 
   const fetchMovie = (id) => {
     axios
@@ -20,16 +19,15 @@ function Movie({ addToSavedList, deleteMovie }) {
   const saveMovie = () => {
     addToSavedList(movie);
   };
-  
+
   const updateMovie = () => {
-    history.push(`/update-movie/${params.id}`)
-  }
+    history.push(`/update-movie/${params.id}`);
+  };
 
   const handleDelete = () => {
-    console.log('deleting movie', params.id)
     deleteMovie(params.id);
-    history.push('/');
-  }
+    history.push("/");
+  };
 
   useEffect(() => {
     fetchMovie(params.id);
@@ -46,9 +44,13 @@ function Movie({ addToSavedList, deleteMovie }) {
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
-      <ButtonGroup size='md'>
-        <Button  color='primary' onClick={updateMovie}>Update Movie</Button>
-        <Button  color='secondary' onClick={handleDelete}>Delete Movie</Button>
+      <ButtonGroup size="md">
+        <Button color="primary" onClick={updateMovie}>
+          Update Movie
+        </Button>
+        <Button color="secondary" onClick={handleDelete}>
+          Delete Movie
+        </Button>
       </ButtonGroup>
     </div>
   );

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import axios from "axios";
 
 const initialFormObject = {
   id: 0,
@@ -10,6 +9,7 @@ const initialFormObject = {
   metascore: 0,
   stars: [],
 };
+
 function UpdateMovieForm(props) {
   const [formValues, setFormValues] = useState(initialFormObject);
   const { id } = useParams();

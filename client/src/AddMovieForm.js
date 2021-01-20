@@ -9,12 +9,11 @@ const initialFormObject = {
   stars: [""],
 };
 
-function AddMovieForm(props) {
+function AddMovieForm({ addMovie }) {
   const [formValues, setFormValues] = useState(initialFormObject);
   const history = useHistory();
 
   const handleChange = (e) => {
-    // console.log(formValues);
     if (e.target.name.includes("stars")) {
       const name = e.target.name;
       const index = name.slice(5);
@@ -40,18 +39,17 @@ function AddMovieForm(props) {
     });
   };
 
-
   const removeEmptyStars = () => {
     const newMovie = formValues;
-    const namedStars = formValues.stars.filter(star => star !== '');
+    const namedStars = formValues.stars.filter((star) => star !== "");
     newMovie.stars = namedStars;
     return newMovie;
-}
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newMovie = removeEmptyStars();
-    props.addMovie(newMovie);
+    addMovie(newMovie);
     history.push(`/`);
   };
 
