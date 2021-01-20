@@ -14,7 +14,7 @@ function AddMovieForm(props) {
   const history = useHistory();
 
   const handleChange = (e) => {
-    console.log(formValues);
+    // console.log(formValues);
     if (e.target.name.includes("stars")) {
       const name = e.target.name;
       const index = name.slice(5);
